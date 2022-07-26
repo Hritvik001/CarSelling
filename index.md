@@ -1,37 +1,36 @@
-## Welcome to GitHub Pages
+<!--<?php session_start();
 
-You can use the [editor on GitHub](https://github.com/Hritvik001/carSelling/edit/gh-pages/index.md) to maintain and preview the content for your website in Markdown files.
+include('database connection.php');
 
-Whenever you commit to this repository, GitHub Pages will run [Jekyll](https://jekyllrb.com/) to rebuild the pages in your site, from the content in your Markdown files.
+if(isset($_POST['login']));
+{
+    $user_unsafe=$_POST['username'];
+    $pass_unsafe=$_POST['password'];
 
-### Markdown
+    $user = mysqli_real_escape_string($con,$user_unsafe);
+    $pass = mysqli_real_escape_string($con,$pass_unsafe);
 
-Markdown is a lightweight and easy-to-use syntax for styling your writing. It includes conventions for
+    $query=mysqli_query($con,"select * from login where username='$user' and password='$pass'")or die(mysqli_error($con));
 
-```markdown
-Syntax highlighted code block
+    $row=mysqli_fetch_array($query);
 
-# Header 1
-## Header 2
-### Header 3
+         $name=$row['username'];
+         $counter=mysqli_num_rows($query);
+         $id=$row['id'];
 
-- Bulleted
-- List
+         if ($counter == 0)
+         {
+            echo "<script type='text/javascript'>alert('Invalid Usrename or Password!');
+            document.location='login.php'</script>";
+         }
+         else
+         {
+            $_SESSION['id']=$id;
+            $_SESSION['username']=$name;
 
-1. Numbered
-2. List
+            echo "<script type='text/javascript'>document.location='home.php'</script>";
+         }
 
-**Bold** and _Italic_ and `Code` text
+}
 
-[Link](url) and ![Image](src)
-```
-
-For more details see [Basic writing and formatting syntax](https://docs.github.com/en/github/writing-on-github/getting-started-with-writing-and-formatting-on-github/basic-writing-and-formatting-syntax).
-
-### Jekyll Themes
-
-Your Pages site will use the layout and styles from the Jekyll theme you have selected in your [repository settings](https://github.com/Hritvik001/carSelling/settings/pages). The name of this theme is saved in the Jekyll `_config.yml` configuration file.
-
-### Support or Contact
-
-Having trouble with Pages? Check out our [documentation](https://docs.github.com/categories/github-pages-basics/) or [contact support](https://support.github.com/contact) and we’ll help you sort it out.
+?>-->
